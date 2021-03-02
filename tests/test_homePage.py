@@ -153,3 +153,19 @@ class TestHomePage(BaseClass, TestData):
                 break
         assert actualGroupData == TestData.groupDetails1
 
+    def test_validateGroupNameSearchData(self, get_HomePage):
+        num = 10
+        actualGroupData = []
+        self.homePage.entityNavigatorE()[1].click()
+        self.homePage.searchInputE().clear()
+        self.homePage.searchInputE().send_keys(TestData.groupDetails1[0])
+        self.homePage.groupSubMenuE()[1].click()
+        self.homePage.searchBtnE().click()
+        time.sleep(1)
+        for i in self.homePage.groupTableDataE():
+            actualGroupData.append(i.text)
+            num = num - 1
+            if num == 1:
+                break
+        assert actualGroupData == TestData.groupDetails1
+
