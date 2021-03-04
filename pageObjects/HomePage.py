@@ -19,6 +19,8 @@ class HomePage:
     cardSubMenu = (By.XPATH, "//div[@class='row margin-around']/div[@class='col-md-6']/div[5]/div/label")
     userTableData = (By.XPATH, "//table[@st-table='usersTableCopy']/tbody/tr/td")
     groupTableData = (By.XPATH, "//table[@st-table='groupsTableDisplay']/tbody/tr/td")
+    transactionTableData = (By.XPATH, "//table[@st-table='transactionsTableDisplay']/tbody/tr/td")
+
 
     #elements:
     def upperNavigatorE(self):
@@ -53,6 +55,9 @@ class HomePage:
 
     def groupTableDataE(self):
         return self.driver.find_elements(*HomePage.groupTableData)
+
+    def transactionTableDataE(self):
+        return self.driver.find_elements(*HomePage.transactionTableData)
 
 
 

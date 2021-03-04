@@ -1,8 +1,5 @@
 import time
-
 import pytest
-import testData as testData
-
 from pageObjects.HomePage import HomePage
 from pageObjects.LoginPage import LoginPage
 from testData.testData import TestData
@@ -169,3 +166,11 @@ class TestHomePage(BaseClass, TestData):
                 break
         assert actualGroupData == TestData.groupDetails1
 
+    def test_validateParmxSearchData(self, get_HomePage):
+        self.homePage.entityNavigatorE()[2].click()
+        self.homePage.searchInputE().clear()
+        self.homePage.searchInputE().send_keys("00a6c32f7283cc399bb")
+        self.homePage.transactionSubMenuE()[4].click()
+        self.homePage.searchBtnE().click()
+        time.sleep(1)
+        assert self.homePage.transactionTableDataE()[14].text == "00a6c32f7283cc399bb"

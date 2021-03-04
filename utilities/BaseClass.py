@@ -28,4 +28,6 @@ class BaseClass:
         sel = Select(locator)
         sel.select_by_visible_text(text)
 
-
+    def switchWindow(self, w):
+        childWindow = self.driver.window_handles[w]
+        self.driver.switch_to.window(childWindow)
