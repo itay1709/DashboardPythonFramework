@@ -43,3 +43,13 @@ class TestUserPage(BaseClass, TestData):
         self.switchWindow(1)
         time.sleep(3)
         assert self.userPage.userNameE().text == self.userDetails1[0]
+
+    def test_changeUserPassword(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[2].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("1112")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        assert self.userPage.successMsgE().text == '{"result":true}'
