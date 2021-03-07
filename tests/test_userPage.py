@@ -53,3 +53,13 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.actionWinOkBtnE().click()
         time.sleep(1)
         assert self.userPage.successMsgE().text == '{"result":true}'
+        self.userPage.closeSuccessMsgE().click()
+
+    def test_assertBasicActionsList(self, get_UserPage):
+        actualBasicActions= []
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        for i in self.userPage.basicActionsListE():
+            actualBasicActions.append(i.text)
+        assert TestData.expectedBasicActionsMenu == actualBasicActions
+

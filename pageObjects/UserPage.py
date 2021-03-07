@@ -9,9 +9,12 @@ class UserPage:
 
     # locators:
     successMsg = (By.XPATH, "//div[@type='success']/div")
+    closeSuccessMsg = (By.XPATH, "//button[@ng-click='close({$event: $event})']")
     userName = (By.XPATH, "//div[@class='col-md-7 text-center']/h3")
     basicActionsBtn = (By.XPATH, "//button[text()='Basic Actions']")
     basicActionsList = (By.XPATH, "//li[@ng-repeat='obj in basicActions']")
+    moreActionsBtn = (By.XPATH, "//button[text()='More Actions']")
+    moreActionsList = (By.XPATH, "//li[@ng-repeat='obj in moreActions']")
 
         # action window locators
     actionWinUserInput = (By.XPATH, "//div[@ng-show = 'action.form.f1']/input")
@@ -22,6 +25,9 @@ class UserPage:
     # elements:
     def successMsgE(self):
         return self.driver.find_element(*UserPage.successMsg)
+
+    def closeSuccessMsgE(self):
+        return self.driver.find_element(*UserPage.closeSuccessMsg)
 
     def userNameE(self):
         return self.driver.find_element(*UserPage.userName)

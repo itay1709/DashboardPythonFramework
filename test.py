@@ -38,10 +38,15 @@ userTableData[5].click()
 childWindow = driver.window_handles[1]
 driver.switch_to.window(childWindow)
 time.sleep(3)
-basicActionsBtnE = driver.find_element_by_xpath("//button[text()='Basic Actions']")
+basicActionsBtnE = driver.find_element_by_xpath("//button[text()='More Actions']")
 basicActionsBtnE.click()
 time.sleep(1)
-basicActionsList = driver.find_elements_by_xpath("//li[@ng-repeat='obj in basicActions']")
+basicActionsList = driver.find_elements_by_xpath("//li[@ng-repeat='obj in moreActions']")
+for i in basicActionsList:
+    actualSubMenu.append(i.text)
+print(actualSubMenu)
+
+'''   
 basicActionsList[2].click()
 time.sleep(1)
 pinCodeInput = driver.find_element_by_xpath("//label[text()='pin']/following-sibling::input")
@@ -50,7 +55,7 @@ pinCodeInput.send_keys("1234")
 
 
 
-'''
+
 for i in upperNavigator:
     actualUpperNavigator.append(i.text)
 assert actualUpperNavigator == expectedUpperNavigator
