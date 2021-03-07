@@ -63,3 +63,11 @@ class TestUserPage(BaseClass, TestData):
             actualBasicActions.append(i.text)
         assert TestData.expectedBasicActionsMenu == actualBasicActions
 
+    def test_assertMoreActionsList(self, get_UserPage):
+        actualMoreActions= []
+        self.userPage.moreActionsBtnE().click()
+        time.sleep(1)
+        for i in self.userPage.moreActionsListE():
+            actualMoreActions.append(i.text)
+        assert TestData.expectedMoreActionsMenu == actualMoreActions
+

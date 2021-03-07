@@ -38,6 +38,12 @@ class UserPage:
     def basicActionsListE(self):
         return self.driver.find_elements(*UserPage.basicActionsList)
 
+    def moreActionsBtnE(self):
+        return self.driver.find_element(*UserPage.moreActionsBtn)
+
+    def moreActionsListE(self):
+        return self.driver.find_elements(*UserPage.moreActionsList)
+
     def actionWinUserInputE(self):
         return self.driver.find_element(*UserPage.actionWinUserInput)
 
