@@ -44,17 +44,6 @@ class TestUserPage(BaseClass, TestData):
         time.sleep(3)
         assert self.userPage.userNameE().text == self.userDetails1[0]
 
-    def test_changeUserPassword(self, get_UserPage):
-        self.userPage.basicActionsBtnE().click()
-        time.sleep(1)
-        self.userPage.basicActionsListE()[2].click()
-        time.sleep(1)
-        self.userPage.actionWinUserInputE().send_keys("1112")
-        self.userPage.actionWinOkBtnE().click()
-        time.sleep(1)
-        assert self.userPage.successMsgE().text == '{"result":true}'
-        self.userPage.closeSuccessMsgE().click()
-
     def test_assertBasicActionsList(self, get_UserPage):
         actualBasicActions= []
         self.userPage.basicActionsBtnE().click()
@@ -70,4 +59,45 @@ class TestUserPage(BaseClass, TestData):
         for i in self.userPage.moreActionsListE():
             actualMoreActions.append(i.text)
         assert TestData.expectedMoreActionsMenu == actualMoreActions
+
+    def test_changeUserPassword(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[2].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("1112")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        assert self.userPage.successMsgE().text == '{"result":true}'
+        self.userPage.closeSuccessMsgE().click()
+
+    def test_changeUserSecAnswer(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[4].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("לוי")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        assert '{"result":true' in self.userPage.successMsgE().text
+        self.userPage.closeSuccessMsgE().click()
+
+    def test_changeUserEmail(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[8].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("itay@gmail.co.il")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(2)
+        assert self.userPage.successMsgE().text == "Email Changed Successfully"
+        assert self.userPage.userDetailsFirstRowE()[1].text == "itay@gmail.co.il"
+        time.sleep(1)
+        self.userPage.closeSuccessMsgE().click()
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[8].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys(TestData.userDetails1[2])
+        self.userPage.actionWinOkBtnE().click()
 

@@ -11,6 +11,7 @@ class UserPage:
     successMsg = (By.XPATH, "//div[@type='success']/div")
     closeSuccessMsg = (By.XPATH, "//button[@ng-click='close({$event: $event})']")
     userName = (By.XPATH, "//div[@class='col-md-7 text-center']/h3")
+    userDetailsFirstRow = (By.XPATH, "//div[@class='panel-body']/div[1]/div/p")
     basicActionsBtn = (By.XPATH, "//button[text()='Basic Actions']")
     basicActionsList = (By.XPATH, "//li[@ng-repeat='obj in basicActions']")
     moreActionsBtn = (By.XPATH, "//button[text()='More Actions']")
@@ -31,6 +32,9 @@ class UserPage:
 
     def userNameE(self):
         return self.driver.find_element(*UserPage.userName)
+
+    def userDetailsFirstRowE(self):
+        return self.driver.find_elements(*UserPage.userDetailsFirstRow)
 
     def basicActionsBtnE(self):
         return self.driver.find_element(*UserPage.basicActionsBtn)

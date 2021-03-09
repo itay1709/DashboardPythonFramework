@@ -27,6 +27,7 @@ class TestHomePage(BaseClass, TestData):
         time.sleep(3)
         self.loginPage.codeE().send_keys(TestData.loginCode)
         self.loginPage.loginBtnE().click()
+        #self.screenShot()
         time.sleep(3)
         for i in self.homePage.upperNavigatorE():
             actualUpperNavigator.append(i.text)
@@ -73,83 +74,56 @@ class TestHomePage(BaseClass, TestData):
         assert actualSubMenu == TestData.expectedCardSubMenu
 
     def test_validatePhoneSearchData(self, get_HomePage):
-        num = 6
-        actualUserData = []
         self.homePage.entityNavigatorE()[0].click()
         self.homePage.searchInputE().send_keys(TestData.userDetails1[1])
         self.homePage.searchBtnE().click()
         time.sleep(1)
-        for i in self.homePage.userTableDataE():
-            actualUserData.append(i.text)
-            num = num - 1
-            if num == 2:
-                break
-        assert actualUserData == TestData.userDetails1
+        assert self.homePage.userTableDataE()[1].text == TestData.userDetails1[1]
 
     def test_validateEmailSearchData(self, get_HomePage):
-        num = 6
-        actualUserData = []
         self.homePage.entityNavigatorE()[0].click()
         self.homePage.searchInputE().clear()
         self.homePage.searchInputE().send_keys(TestData.userDetails2[2])
         self.homePage.userSubMenuE()[1].click()
         self.homePage.searchBtnE().click()
         time.sleep(1)
-        for i in self.homePage.userTableDataE():
-            actualUserData.append(i.text)
-            num = num - 1
-            if num == 2:
-                break
-        assert actualUserData == TestData.userDetails2
+        assert self.homePage.userTableDataE()[2].text == TestData.userDetails2[2]
+
 
     def test_validateNameSearchData(self, get_HomePage):
-        num = 6
-        actualUserData = []
         self.homePage.entityNavigatorE()[0].click()
         self.homePage.searchInputE().clear()
         self.homePage.searchInputE().send_keys(TestData.userDetails1[0])
         self.homePage.userSubMenuE()[2].click()
         self.homePage.searchBtnE().click()
         time.sleep(1)
-        for i in self.homePage.userTableDataE():
-            actualUserData.append(i.text)
-            num = num - 1
-            if num == 2:
-                break
-        assert actualUserData == TestData.userDetails1
+        assert self.homePage.userTableDataE()[0].text == TestData.userDetails1[0]
 
     def test_validateUidSearchData(self, get_HomePage):
-        num = 6
-        actualUserData = []
         self.homePage.entityNavigatorE()[0].click()
         self.homePage.searchInputE().clear()
         self.homePage.searchInputE().send_keys(TestData.userDetails2[3])
         self.homePage.userSubMenuE()[3].click()
         self.homePage.searchBtnE().click()
         time.sleep(1)
-        for i in self.homePage.userTableDataE():
-            actualUserData.append(i.text)
-            num = num - 1
-            if num == 2:
-                break
-        assert actualUserData == TestData.userDetails2
+        assert self.homePage.userTableDataE()[3].text == TestData.userDetails2[3]
 
     def test_validateGroupIDSearchData(self, get_HomePage):
-        num = 10
-        actualGroupData = []
         self.homePage.entityNavigatorE()[1].click()
         self.homePage.searchInputE().clear()
         self.homePage.searchInputE().send_keys(TestData.groupDetails1[8])
         self.homePage.groupSubMenuE()[4].click()
         self.homePage.searchBtnE().click()
         time.sleep(1)
+        assert self.homePage.groupTableDataE()[8].text == TestData.groupDetails1[8]
+        '''
         for i in self.homePage.groupTableDataE():
             actualGroupData.append(i.text)
             num = num - 1
             if num == 1:
                 break
         assert actualGroupData == TestData.groupDetails1
-
+        '''
     def test_validateGroupNameSearchData(self, get_HomePage):
         num = 10
         actualGroupData = []
@@ -159,12 +133,7 @@ class TestHomePage(BaseClass, TestData):
         self.homePage.groupSubMenuE()[1].click()
         self.homePage.searchBtnE().click()
         time.sleep(1)
-        for i in self.homePage.groupTableDataE():
-            actualGroupData.append(i.text)
-            num = num - 1
-            if num == 1:
-                break
-        assert actualGroupData == TestData.groupDetails1
+        assert self.homePage.groupTableDataE()[0].text == TestData.groupDetails1[0]
 
     def test_validateParmxSearchData(self, get_HomePage):
         self.homePage.entityNavigatorE()[2].click()

@@ -31,3 +31,4 @@ class BaseClass:
     def switchWindow(self, w):
         childWindow = self.driver.window_handles[w]
         self.driver.switch_to.window(childWindow)
+

@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+import time
+from datetime import datetime
 
 
 def pytest_addoption(parser):
@@ -20,4 +22,5 @@ def setupBrowser(request):
     request.cls.driver = driver
     yield
     driver.close()
+
 

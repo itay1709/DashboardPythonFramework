@@ -38,13 +38,24 @@ userTableData[5].click()
 childWindow = driver.window_handles[1]
 driver.switch_to.window(childWindow)
 time.sleep(3)
-basicActionsBtnE = driver.find_element_by_xpath("//button[text()='More Actions']")
+basicActionsBtnE = driver.find_element_by_xpath("//button[text()='Basic Actions']")
 basicActionsBtnE.click()
 time.sleep(1)
-basicActionsList = driver.find_elements_by_xpath("//li[@ng-repeat='obj in moreActions']")
-for i in basicActionsList:
-    actualSubMenu.append(i.text)
-print(actualSubMenu)
+basicActionsList = driver.find_elements_by_xpath("//li[@ng-repeat='obj in basicActions']")
+basicActionsList[8].click()
+time.sleep(1)
+actionInput = driver.find_element_by_xpath("//div[@ng-show = 'action.form.f1']/input")
+actionInput.send_keys("itay@gmail.co.uk")
+actionWinOkBtn = driver.find_element_by_xpath("//button[@class='btn btn-success']")
+actionWinOkBtn.click()
+time.sleep(2)
+successMsg = driver.find_element_by_xpath("//div[@type='success']/div")
+userDetailsFirstRow = driver.find_elements_by_xpath("//div[@class='panel-body']/div[1]/div/p")
+assert successMsg.text == "Email Changed Successfully"
+assert userDetailsFirstRow[1].text == "itay@gmail.co.uk"
+driver.get_screenshot_as_file()
+
+
 
 '''   
 basicActionsList[2].click()
