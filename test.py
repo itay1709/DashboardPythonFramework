@@ -53,7 +53,8 @@ successMsg = driver.find_element_by_xpath("//div[@type='success']/div")
 userDetailsFirstRow = driver.find_elements_by_xpath("//div[@class='panel-body']/div[1]/div/p")
 assert successMsg.text == "Email Changed Successfully"
 assert userDetailsFirstRow[1].text == "itay@gmail.co.uk"
-driver.get_screenshot_as_file()
+driver.get_screenshot_as_file(file)
+driver.refresh()
 
 
 

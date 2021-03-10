@@ -13,6 +13,7 @@ class LoginPage:
     getLoginCodeBtn = (By.XPATH, "//div[@class='form-actions']/button[1]")
     code = (By.ID, "code")
     loginBtn = (By.XPATH, "//button[normalize-space()='Login']")
+    errorMsg = (By.XPATH, "//div[@class='alert alert-danger ng-binding']")
 
     #elements
     def userNameE(self):
@@ -32,3 +33,6 @@ class LoginPage:
 
     def loginBtnE(self):
         return self.driver.find_element(*LoginPage.loginBtn)
+
+    def errorMsgE(self):
+        return self.driver.find_element(*LoginPage.errorMsg)

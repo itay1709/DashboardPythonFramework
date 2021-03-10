@@ -1,5 +1,6 @@
 import time
 import pytest
+
 from pageObjects.HomePage import HomePage
 from pageObjects.LoginPage import LoginPage
 from testData.testData import TestData
@@ -19,6 +20,7 @@ class TestHomePage(BaseClass, TestData):
         return self.homePage
 
     def test_validateUpperNavigator(self, get_loginPage, get_HomePage):
+        log = self.logScriptDemo()
         actualUpperNavigator = []
         self.loginPage.userNameE().send_keys(TestData.userName)
         self.loginPage.emailE().send_keys(TestData.email)
@@ -32,6 +34,8 @@ class TestHomePage(BaseClass, TestData):
         for i in self.homePage.upperNavigatorE():
             actualUpperNavigator.append(i.text)
         assert actualUpperNavigator == TestData.expectedUpperNavigator
+        log.info("{} {}".format("expected: ", TestData.expectedUpperNavigator))
+
 
     def test_validateEntityNavigator(self, get_HomePage):
         actualEntityNavigator = []
@@ -143,3 +147,4 @@ class TestHomePage(BaseClass, TestData):
         self.homePage.searchBtnE().click()
         time.sleep(1)
         assert self.homePage.transactionTableDataE()[14].text == "00a6c32f7283cc399bb"
+

@@ -1,0 +1,6 @@
+2021-03-10 11:12:20,330 :ERROR :test_validateUpperNavigator :None
+2021-03-10 11:14:51,828 :INFO :test_validateUpperNavigator :None
+2021-03-10 11:16:15,684 :INFO :test_validateUpperNavigator :None
+2021-03-10 11:24:04,842 :INFO :test_validateUpperNavigator :expected:  ['LOG', 'ADMINS', 'CONF EDITOR', 'CS', 'BI', 'MASAV', 'SCRIPTS', 'SMP', 'FRAUD', 'EXTRACT DATA', 'MARKETING', 'DB EDITOR', 'LOGOUT']
+2021-03-10 13:02:55,224 :INFO :test_validateUpperNavigator :expected:  ['LOG', 'ADMINS', 'CONF EDITOR', 'CS', 'BI', 'MASAV', 'SCRIPTS', 'SMP', 'FRAUD', 'EXTRACT DATA', 'MARKETING', 'DB EDITOR', 'LOGOUT']
+2021-03-10 15:24:17,247 :INFO :test_validateUpperNavigator :expected:  ['LOG', 'ADMINS', 'CONF EDITOR', 'CS', 'BI', 'MASAV', 'SCRIPTS', 'SMP', 'FRAUD', 'EXTRACT DATA', 'MARKETING', 'DB EDITOR', 'LOGOUT']
