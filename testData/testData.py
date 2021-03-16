@@ -21,3 +21,4 @@ class TestData:
     #user page:
     expectedBasicActionsMenu = ['Set New Phone Number', 'Delete user', 'Set New Pin', 'Set Pin Status', 'Set Security Answer', 'Change Sec Question', '', '', 'Set A New Email', 'Set Profile Type', 'Delete user’s ID number', 'Change user’s ID number', 'Export user’s history']
     expectedMoreActionsMenu = ['Change KYC level  New', 'Add new KYC document  New', 'Watch List ', 'Remove from Watch List ', 'Block ', 'Un-Block ', 'Ban ', 'Ukraine Release  New', 'Un-Ban ', '', '', 'Manual Bank Withdraw ', '', '', 'Claim Money ', 'Rollback Money  New', 'Unset Unique Withdraw BANK fees ', 'Depracted Actions \nAdd Unique Pay Fees \nAdd Unique Withdraw BANK Fees \nUnset Unique Pay fees \nUnset Unique Withdraw CARD fees \nAdd Unique Withdraw CARD Fees ']
+    expectedProfileTypeList = ["", "Personal", "Business - Exempt", "Business - Licensed", "Business - Corporate", "Non - Profit Organization", "Governmental", "Business - Unclassified"]

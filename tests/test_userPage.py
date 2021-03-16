@@ -36,13 +36,13 @@ class TestUserPage(BaseClass, TestData):
         self.loginPage.loginBtnE().click()
         time.sleep(3)
         self.homePage.entityNavigatorE()[0].click()
-        self.homePage.searchInputE().send_keys(TestData.userDetails1[1])
+        self.homePage.searchInputE().send_keys(TestData.userDetails2[1])
         self.homePage.searchBtnE().click()
         time.sleep(1)
         self.homePage.userTableDataE()[5].click()
         self.switchWindow(1)
         time.sleep(3)
-        assert self.userPage.userNameE().text == self.userDetails1[0]
+        assert self.userPage.userNameE().text == self.userDetails2[0]
 
     def test_assertBasicActionsList(self, get_UserPage):
         actualBasicActions= []
@@ -87,17 +87,70 @@ class TestUserPage(BaseClass, TestData):
         time.sleep(1)
         self.userPage.basicActionsListE()[8].click()
         time.sleep(1)
-        self.userPage.actionWinUserInputE().send_keys("itay@gmail.co.il")
+        self.userPage.actionWinUserInputE().send_keys("itayzis@walla.co.il")
         self.userPage.actionWinOkBtnE().click()
         time.sleep(2)
         assert self.userPage.successMsgE().text == "Email Changed Successfully"
-        assert self.userPage.userDetailsFirstRowE()[1].text == "itay@gmail.co.il"
+        assert self.userPage.userDetailsFirstRowE()[1].text == "itayzis@walla.co.il"
+        self.logScriptDemo().info("actual message: " + self.userPage.successMsgE().text)
         time.sleep(1)
         self.userPage.closeSuccessMsgE().click()
         self.userPage.basicActionsBtnE().click()
         time.sleep(1)
         self.userPage.basicActionsListE()[8].click()
         time.sleep(1)
-        self.userPage.actionWinUserInputE().send_keys(TestData.userDetails1[2])
+        self.userPage.actionWinUserInputE().send_keys(TestData.userDetails2[2])
         self.userPage.actionWinOkBtnE().click()
+
+    def test_AsserProfileTypeList(self, get_UserPage):
+        actualProfileTypeList = []
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[9].click()
+        time.sleep(1)
+        self.userPage.actionWinOpenComboE().click()
+        for i in self.userPage.actionWinComboE():
+            actualProfileTypeList.append(i.text)
+        assert TestData.expectedProfileTypeList == actualProfileTypeList
+        self.userPage.actionWinOkBtnE().click()
+
+    def test_changeUserProfile(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[9].click()
+        time.sleep(1)
+        self.userPage.actionWinOpenComboE().click()
+        self.userPage.actionWinComboE()[2].click()
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        assert self.userPage.userDetailsSecondRowE()[2].text == 'Profile Type: Business - Exempt'
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[9].click()
+        time.sleep(1)
+        self.userPage.actionWinOpenComboE().click()
+        self.userPage.actionWinComboE()[1].click()
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+
+    def test_changeUserID(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[11].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("999731334")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        assert self.userPage.userDetailsFirstRowE()[5].text == "ID Number:999731334"
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[11].click()
+        time.sleep(1)
+        self.userPage.actionWinUserInputE().send_keys("999525850")
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+
+
+
+
 

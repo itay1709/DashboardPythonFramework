@@ -12,6 +12,7 @@ class UserPage:
     closeSuccessMsg = (By.XPATH, "//button[@ng-click='close({$event: $event})']")
     userName = (By.XPATH, "//div[@class='col-md-7 text-center']/h3")
     userDetailsFirstRow = (By.XPATH, "//div[@class='panel-body']/div[1]/div/p")
+    userDetailsSecondRow = (By.XPATH, "//div[@class='panel-body']/div[2]/div/p")
     basicActionsBtn = (By.XPATH, "//button[text()='Basic Actions']")
     basicActionsList = (By.XPATH, "//li[@ng-repeat='obj in basicActions']")
     moreActionsBtn = (By.XPATH, "//button[text()='More Actions']")
@@ -22,6 +23,8 @@ class UserPage:
     actionWinMes = (By.XPATH, "//h3[@class ='text-center ng-binding']")
     actionWinOkBtn = (By.XPATH, "//button[@class='btn btn-success']")
     actionWinCancelBtn = (By.XPATH, "//button[@class='btn btn-success']")
+    actionWinOpenCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']")
+    actionWinCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']/option")
 
     # elements:
     def successMsgE(self):
@@ -35,6 +38,9 @@ class UserPage:
 
     def userDetailsFirstRowE(self):
         return self.driver.find_elements(*UserPage.userDetailsFirstRow)
+
+    def userDetailsSecondRowE(self):
+        return self.driver.find_elements(*UserPage.userDetailsSecondRow)
 
     def basicActionsBtnE(self):
         return self.driver.find_element(*UserPage.basicActionsBtn)
@@ -59,6 +65,14 @@ class UserPage:
 
     def actionWinCancelBtnE(self):
         return self.driver.find_element(*UserPage.actionWinCancelBtn)
+
+    def actionWinOpenComboE(self):
+        return self.driver.find_element(*UserPage.actionWinOpenCombo)
+
+    def actionWinComboE(self):
+        return self.driver.find_elements(*UserPage.actionWinCombo)
+
+
 
 
 
