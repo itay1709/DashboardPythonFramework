@@ -92,6 +92,7 @@ class TestUserPage(BaseClass, TestData):
         time.sleep(2)
         assert self.userPage.successMsgE().text == "Email Changed Successfully"
         assert self.userPage.userDetailsFirstRowE()[1].text == "itayzis@walla.co.il"
+        self.userPage.closeSuccessMsgE().click()
         self.logScriptDemo().info("actual message: " + self.userPage.successMsgE().text)
         time.sleep(1)
         self.userPage.closeSuccessMsgE().click()
@@ -101,6 +102,7 @@ class TestUserPage(BaseClass, TestData):
         time.sleep(1)
         self.userPage.actionWinUserInputE().send_keys(TestData.userDetails2[2])
         self.userPage.actionWinOkBtnE().click()
+        self.userPage.closeSuccessMsgE().click()
 
     def test_AsserProfileTypeList(self, get_UserPage):
         actualProfileTypeList = []
@@ -124,6 +126,7 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.actionWinOkBtnE().click()
         time.sleep(1)
         assert self.userPage.userDetailsSecondRowE()[2].text == 'Profile Type: Business - Exempt'
+        self.userPage.closeSuccessMsgE().click()
         self.userPage.basicActionsBtnE().click()
         time.sleep(1)
         self.userPage.basicActionsListE()[9].click()
@@ -132,6 +135,7 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.actionWinComboE()[1].click()
         self.userPage.actionWinOkBtnE().click()
         time.sleep(1)
+        self.userPage.closeSuccessMsgE().click()
 
     def test_changeUserID(self, get_UserPage):
         self.userPage.basicActionsBtnE().click()
@@ -142,6 +146,7 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.actionWinOkBtnE().click()
         time.sleep(1)
         assert self.userPage.userDetailsFirstRowE()[5].text == "ID Number:999731334"
+        self.userPage.closeSuccessMsgE().click()
         self.userPage.basicActionsBtnE().click()
         time.sleep(1)
         self.userPage.basicActionsListE()[11].click()
@@ -149,6 +154,17 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.actionWinUserInputE().send_keys("999525850")
         self.userPage.actionWinOkBtnE().click()
         time.sleep(1)
+        self.userPage.closeSuccessMsgE().click()
+
+    def test_exportUserHistory(self, get_UserPage):
+        self.userPage.basicActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.basicActionsListE()[12].click()
+        time.sleep(1)
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(2)
+        assert self.userPage.successMsgE().text == '{"result":"Success"}'
+
 
 
 
