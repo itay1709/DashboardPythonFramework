@@ -23,8 +23,10 @@ class UserPage:
     actionWinMes = (By.XPATH, "//h3[@class ='text-center ng-binding']")
     actionWinOkBtn = (By.XPATH, "//button[@class='btn btn-success']")
     actionWinCancelBtn = (By.XPATH, "//button[@class='btn btn-success']")
-    actionWinOpenCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']")
-    actionWinCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']/option")
+    actionWinOpenLeftCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']")
+    actionWinLeftCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f20.key]']/option")
+    actionWinOpenRightCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f18.key]']")
+    actionWinRightCombo = (By.XPATH, "//select[@ng-model='formData[action.form.f18.key]']/option")
 
     # elements:
     def successMsgE(self):
@@ -67,10 +69,16 @@ class UserPage:
         return self.driver.find_element(*UserPage.actionWinCancelBtn)
 
     def actionWinOpenComboE(self):
-        return self.driver.find_element(*UserPage.actionWinOpenCombo)
+        return self.driver.find_element(*UserPage.actionWinOpenLeftCombo)
 
     def actionWinComboE(self):
-        return self.driver.find_elements(*UserPage.actionWinCombo)
+        return self.driver.find_elements(*UserPage.actionWinLeftCombo)
+
+    def actionWinOpenRightComboE(self):
+        return self.driver.find_element(*UserPage.actionWinOpenRightCombo)
+
+    def actionWinRightComboE(self):
+        return self.driver.find_elements(*UserPage.actionWinRightCombo)
 
 
 

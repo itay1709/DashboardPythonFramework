@@ -27,6 +27,7 @@ class TestUserPage(BaseClass, TestData):
         return self.userPage
 
     def test_validateUserName(self, get_HomePage, get_loginPage, get_UserPage):
+        time.sleep(1)
         self.loginPage.userNameE().send_keys(TestData.userName)
         self.loginPage.emailE().send_keys(TestData.email)
         self.loginPage.passwordE().send_keys(TestData.password)
@@ -87,21 +88,21 @@ class TestUserPage(BaseClass, TestData):
         time.sleep(1)
         self.userPage.basicActionsListE()[8].click()
         time.sleep(1)
-        self.userPage.actionWinUserInputE().send_keys("itayzis@walla.co.il")
+        self.userPage.actionWinUserInputE().send_keys("itayzis@gggmmm.co.il")
         self.userPage.actionWinOkBtnE().click()
         time.sleep(2)
         assert self.userPage.successMsgE().text == "Email Changed Successfully"
-        assert self.userPage.userDetailsFirstRowE()[1].text == "itayzis@walla.co.il"
+        assert self.userPage.userDetailsFirstRowE()[1].text == "itayzis@gggmmm.co.il"
         self.userPage.closeSuccessMsgE().click()
-        self.logScriptDemo().info("actual message: " + self.userPage.successMsgE().text)
+        #self.logScriptDemo().info("actual message: " + self.userPage.successMsgE().text)
         time.sleep(1)
-        self.userPage.closeSuccessMsgE().click()
         self.userPage.basicActionsBtnE().click()
         time.sleep(1)
         self.userPage.basicActionsListE()[8].click()
         time.sleep(1)
         self.userPage.actionWinUserInputE().send_keys(TestData.userDetails2[2])
         self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
         self.userPage.closeSuccessMsgE().click()
 
     def test_AsserProfileTypeList(self, get_UserPage):
@@ -115,6 +116,8 @@ class TestUserPage(BaseClass, TestData):
             actualProfileTypeList.append(i.text)
         assert TestData.expectedProfileTypeList == actualProfileTypeList
         self.userPage.actionWinOkBtnE().click()
+        time.sleep(1)
+        self.userPage.closeSuccessMsgE().click()
 
     def test_changeUserProfile(self, get_UserPage):
         self.userPage.basicActionsBtnE().click()
@@ -162,8 +165,34 @@ class TestUserPage(BaseClass, TestData):
         self.userPage.basicActionsListE()[12].click()
         time.sleep(1)
         self.userPage.actionWinOkBtnE().click()
-        time.sleep(2)
+        time.sleep(4)
         assert self.userPage.successMsgE().text == '{"result":"Success"}'
+        self.userPage.closeSuccessMsgE().click()
+
+    def test_changeKycLevel(self, get_UserPage):
+        self.userPage.moreActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.moreActionsListE()[0].click()
+        time.sleep(1)
+        self.userPage.actionWinOpenRightComboE().click()
+        self.userPage.actionWinRightComboE()[2].click()
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(2)
+        assert self.userPage.successMsgE().text == 'KYC Level Changed Successfully'
+        assert self.userPage.userDetailsSecondRowE()[3].text == 'kycLevel:high'
+        self.userPage.closeSuccessMsgE().click()
+        self.userPage.moreActionsBtnE().click()
+        time.sleep(1)
+        self.userPage.moreActionsListE()[0].click()
+        time.sleep(1)
+        self.userPage.actionWinOpenRightComboE().click()
+        self.userPage.actionWinRightComboE()[1].click()
+        self.userPage.actionWinOkBtnE().click()
+        time.sleep(2)
+        self.userPage.closeSuccessMsgE().click()
+
+
+
 
 
 

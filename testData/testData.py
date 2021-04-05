@@ -15,7 +15,7 @@ class TestData:
     expectedPofSubMenu = ['phone', 'email', 'name', 'id', 'idNumber']
     expectedCardSubMenu = ['israeli id', 'token', 'user Id', 'user phone', '4-digits']
     userDetails1 = ['איתי זיסמן בדיקות הכי טוב', '972-502142090', 'test@test123.com', '5ede04bbb96fa3000a67ae7e']
-    userDetails2 = ['איתי בדיקות 2', '972-502142080', 'itayzis@gmail.com', '5f3b63194c900f000a40122f']
+    userDetails2 = ['איתי בדיקות 2', '972-502142080', 'itayzis@walla.co.il', '5f3b63194c900f000a40122f']
     groupDetails1 = ['כולם משלמים', '972-502142090', 'איתי זיסמן בדיקות הכי טוב', '210.08', '349.92', '560', '28/02/2021', '11', '603bb03b7b3fd0000a6c3168']
 
     #user page:

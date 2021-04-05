@@ -27,7 +27,6 @@ class TestHomePage(BaseClass, TestData):
         time.sleep(3)
         self.loginPage.codeE().send_keys(TestData.loginCode)
         self.loginPage.loginBtnE().click()
-        #self.screenShot()
         time.sleep(3)
         for i in self.homePage.upperNavigatorE():
             actualUpperNavigator.append(i.text)
